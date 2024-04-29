@@ -17,12 +17,17 @@ const ProfileHeader = () => {
                     <Text fontSize={{ base: "sm", md: "lg" }}>asaprogrammer_</Text>
 
                     <Flex gap={4} alignItems={"center"} justifyContent={"center"}>
-                        <Button bg={"white"} color="black" _hover={{ bg: "whiteAlpha.800" }} size={{ base: "xs", md: "sm" }}>
-                        Edit Profile
-                    </Button>
-                </Flex>
-            </Flex>
-
+							<Button
+								bg={"white"}
+								color={"black"}
+								_hover={{ bg: "whiteAlpha.800" }}
+								size={{ base: "xs", md: "sm" }}
+								onClick={onOpen}
+							>
+								Edit Profile
+							</Button>
+						</Flex>
+	                 </Flex>
             <Flex alignItems={"center"} gap={{ base: 2, sm: 4 }}>
                 <Text>
                     <Text as="span" fontWeight={"bold"} mr={1}>4</Text>
@@ -36,23 +41,14 @@ const ProfileHeader = () => {
                 </Text>
                 <Text>
                     <Text as='span' fontWeight={"bold"} mr={1}>
-                        175
-                    </Text>
-                    Following
-                </Text>
-            </Flex>
-            <Flex alignItems={"center"} gap={4}>
-                <Text fontSize={"sm"} fontWeight={"bold" } As a Programmer />
-            </Flex>
-                <Text fontSize={"sm"}>As a Programmer</Text>
+							{userProfile.following.length}
+						</Text>
+						Following
+					</Text>
+				</Flex>
             </VStack>
         </Flex>
-    </>
     );
 };
 
 export default ProfileHeader;
-                
-
-                
-
