@@ -54,7 +54,6 @@ const Sidebar = () => {
           >
             Logout
           </Box>
-          </button>
         </Link>
       </Tooltip>
     </Box>
