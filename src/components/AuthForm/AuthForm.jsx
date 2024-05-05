@@ -3,7 +3,7 @@ import { useState } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
 import "./AuthForm.css"
-import GoogleAuth from "./GoogleAuth";
+// import GoogleAuth from "./GoogleAuth";
 
 
 const AuthForm = () => {
@@ -17,7 +17,7 @@ const AuthForm = () => {
           
         {isLogin ? <Login /> : <Signup />}
 
-        <Flex alignItems={'center'} justifyContent={'center'} my={0}  w={60} >
+        {/* <Flex alignItems={'center'} justifyContent={'center'} my={0}  w={60} >
           <Box flex={2} h={"1px"} bg={"gray.500"} />
 						<Text mx={1} color={"gray.500"}>
 							or
@@ -25,7 +25,7 @@ const AuthForm = () => {
 					<Box flex={2} h={"1px"} bg={"gray.500"} />
         </Flex>
         
-        <GoogleAuth prefix={isLogin ? "Log in" : "Sign up"}/>
+        <GoogleAuth prefix={isLogin ? "Log in" : "Sign up"}/> */}
 
         <Box padding={5}>
           <Flex alignItems={"center"} justifyContent={"center"}>

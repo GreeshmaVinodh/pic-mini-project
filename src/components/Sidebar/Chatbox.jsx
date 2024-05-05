@@ -14,7 +14,7 @@ const Chatbox = () => {
                 >
                 <Link
                     display={"flex"}
-                    to={"#"}
+                    to={"/chat"}
                     as={RouterLink}
                     alignitems={"center"}
                     gap={4}

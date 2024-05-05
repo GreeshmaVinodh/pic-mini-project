@@ -48,7 +48,7 @@ const useSignUpWithEmailAndPassword = () => {
 					createdAt: Date.now(),
 				};
 				await setDoc(doc(firestore, "users", newUser.user.uid), userDoc);
-				localStorage.setItem("user-info", JSON.stringify(userDoc));
+				localStorage.setItem("userInfo", JSON.stringify(userDoc));
 				loginUser(userDoc);
 				//create empty user chats on firestore
 				await setDoc(doc(firestore, "userChats", newUser.user.uid), {});

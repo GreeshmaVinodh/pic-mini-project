@@ -2,6 +2,7 @@ import { Box, Link, Tooltip,Avatar } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import useAuthStore from "../../store/authStore";
 
+
 const ProfileLink = () => {
 	const authUser = useAuthStore((state) => state.user);
 	return (
@@ -16,6 +17,7 @@ const ProfileLink = () => {
                 <Link
                     display={"flex"}
                     to={`/${authUser?.username}`}
+
                     as={RouterLink}
                     alignitems={"center"}
                     gap={4}

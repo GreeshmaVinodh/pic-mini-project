@@ -12,7 +12,7 @@ const useLogout = () => {
 	const handleLogout = async () => {
 		try {
 			await signOut();
-			localStorage.removeItem("user-info");
+			localStorage.removeItem("userInfo");
 			logoutUser();
 			
 		} catch (error) {

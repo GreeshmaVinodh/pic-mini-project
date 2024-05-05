@@ -38,7 +38,7 @@ const useEditProfile = () => {
 			};
 
 			await updateDoc(userDocRef, updatedUser);
-			localStorage.setItem("user-info", JSON.stringify(updatedUser));
+			localStorage.setItem("userInfo", JSON.stringify(updatedUser));
 			setAuthUser(updatedUser);
 			setUserProfile(updatedUser);
 			showToast("Success", "Profile updated successfully", "success");
