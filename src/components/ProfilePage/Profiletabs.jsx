@@ -19,7 +19,7 @@ const Profiletabs = () => {
 				</Text>
 			</Flex>
 
-			<Flex alignItems={"center"} p='3' gap={1} cursor={"pointer"}>
+			{/* <Flex alignItems={"center"} p='3' gap={1} cursor={"pointer"}>
 				<Box fontSize={20}>
 					<BsBookmark color={"#127B7E"}/>
 				</Box>
@@ -35,7 +35,7 @@ const Profiletabs = () => {
 				<Text fontSize={12} display={{ base: "none", sm: "block" }} color={"#127B7E"}>
 					Likes
 				</Text>
-			</Flex>
+			</Flex> */}
 		</Flex>
 	);
 };

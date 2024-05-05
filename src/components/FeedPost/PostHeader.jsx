@@ -13,19 +13,19 @@ const PostHeader = ({username,avatar}) => {
           cursor={'pointer'}
         >
          <Button
-            size={"sm"}
+            size={"xl"}
             bg={"#127B7E"}
             fontSize={10}
             color={"white"}
             fontWeight={'semibold'}
-            padding={2}
+            padding={3}
             justifyContent={'space-between'}
             _hover={{
               color: "white",
             }}
             transition={"0.2 ease in out"}
           >
-            Request to Collab
+            Follow
           </Button>
         </Box>
     </Flex>

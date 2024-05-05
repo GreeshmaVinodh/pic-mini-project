@@ -64,11 +64,11 @@ const ProfilePost = ({post}) => {
 		<GridItem
 			cursor={"pointer"}
 			borderRadius={4}
+			w={"container.small"}
 			overflow={"hidden"}
 			border={"1px solid"}
 			borderColor={"whiteAlpha.300"}
 			position={"relative"}
-			aspectRatio={1 / 1}
 			onClick={onOpen}
 		>
         <Flex
@@ -100,14 +100,14 @@ const ProfilePost = ({post}) => {
 		</Flex>
 	</Flex>
 
-		<Flex border={"1px solid #127B7E "} borderRadius={4} padding={2} h={150}>
-			<Text color={"#127B7E"} fontWeight={"bold"}>
+		<Flex border={"1px solid #127B7E "} borderRadius={4} h={200} gap={5}>
+			<Text color={"#127B7E"} fontSize={"sm"} padding={3}>
 				{post.caption}
 			</Text>
 		</Flex>
 		</GridItem>
 
-        <Modal isOpen={isOpen} onClose={onClose} isCentered={true} size={{ base: "3xl", md: "5xl" }}>
+        <Modal isOpen={isOpen} onClose={onClose} isCentered={true}  size={{ base: "2xl", md: "5xl" }}>
 				<ModalOverlay />
 				<ModalContent>
 					<ModalCloseButton />
@@ -116,7 +116,7 @@ const ProfilePost = ({post}) => {
 							gap='4'
 							w={{ base: "90%", sm: "70%", md: "full" }}
 							mx={"auto"}
-							maxH={"90vh"}
+							maxH={"100vh"}
 							minH={"50vh"}
 						>
 							<Flex
@@ -129,7 +129,7 @@ const ProfilePost = ({post}) => {
 								alignItems={"center"}
 							>
 								<Box>
-									<Text color={"#127B7E"}>
+									<Text color={"#127B7E"} padding={2}>
 										{post.caption}
 									</Text>
 								</Box>
