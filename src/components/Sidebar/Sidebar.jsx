@@ -9,6 +9,7 @@ const Sidebar = () => {
   return (
     <Box
       height={"100vh"}
+      w={{base : "80px" , md : "16vw"}}
       borderRight={"1px solid #127B7E"}
       py={8}
       position={"sticky"}
@@ -18,10 +19,10 @@ const Sidebar = () => {
       justifyContent={"space-between"}
     >
       <Flex direction={"column"} gap={3} w="full">
-        <Image src="/public/assets/PIC LOGO.png" w={100} h={58} alt="PIC" marginBottom={10} />
+        <Image src="/public/assets/PIC LOGO.png" alt="PIC" marginBottom={10} />
       </Flex>
       <Flex direction={"column"}  gap={5}cursor={"pointer"} >
-					<SidebarItems />
+					<SidebarItems position={"sticky"}/>
 				</Flex>
       <Tooltip
         hasArrow
