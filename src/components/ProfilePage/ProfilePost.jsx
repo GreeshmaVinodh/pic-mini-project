@@ -92,10 +92,10 @@ const ProfilePost = ({post}) => {
 				</Text>
 			</Flex>
 			<Flex>
-				<FaComment size={20} />
+				{/* <FaComment size={20} />
 					<Text fontWeight={"bold"} ml={2}>
 						{post.comments.length}
-					</Text>
+					</Text> */}
 			</Flex>
 		</Flex>
 	</Flex>

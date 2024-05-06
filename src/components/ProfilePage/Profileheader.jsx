@@ -45,7 +45,7 @@ const ProfileHeader = () => {
 							<Button
 								bg={"blue.500"}
 								color={"white"}
-								_hover={{ bg: "blue.600" }}
+								_hover={{ bg: "#127B7E" }}
 								size={{ base: "xs", md: "sm" }}
 								onClick={handleFollowUser}
 								isLoading={isUpdating}
