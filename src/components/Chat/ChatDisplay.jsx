@@ -56,7 +56,7 @@
 //         await setDoc(doc(firestore, "chats", combinedId), { messages: [] });
 
 //         //create user chats
-//         await updateDoc(doc(firestore, "userChats", currentUser.uid), {
+//         await updateDoc(doc(firestore, "chatss", currentUser.uid), {
 //           [combinedId + ".userInfo"]: {
 //             uid: user.uid,
 //             username: user.username,
@@ -64,7 +64,7 @@
 //           [combinedId + ".date"]: serverTimestamp(),
 //         });
 
-//         await updateDoc(doc(firestore, "userChats", user.uid), {
+//         await updateDoc(doc(firestore, "chatss", user.uid), {
 //           [combinedId + ".userInfo"]: {
 //             uid: currentUser.uid,
 //             username: currentUser.username,
@@ -166,14 +166,14 @@ const ChatDisplay = () => {
         //create a chat in chats collection
         await setDoc(doc(firestore, "chats", combinedId), { messages: [] });
         //create user chats
-        await updateDoc(doc(firestore, "userChats", currentUser.uid), {
+        await updateDoc(doc(firestore, "chatss", currentUser.uid), {
           [combinedId + ".userInfo"]: {
             uid: user.uid,
             username: user.username,
           },
           [combinedId + ".date"]: serverTimestamp(),
         });
-        await updateDoc(doc(firestore, "userChats", user.uid), {
+        await updateDoc(doc(firestore, "chatss", user.uid), {
           [combinedId + ".userInfo"]: {
             uid: currentUser.uid,
             username: currentUser.username,

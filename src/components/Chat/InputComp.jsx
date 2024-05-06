@@ -58,14 +58,14 @@
 //         });
 //       }
   
-//       await updateDoc(doc(firestore, "userChats", currentUser.uid), {
+//       await updateDoc(doc(firestore, "chatss", currentUser.uid), {
 //         [data.chatId + ".lastMessage"]: {
 //           text,
 //         },
 //         [data.chatId + ".date"]: serverTimestamp(),
 //       });
   
-//       await updateDoc(doc(firestore, "userChats", data.user.uid), {
+//       await updateDoc(doc(firestore, "chatss", data.user.uid), {
 //         [data.chatId + ".lastMessage"]: {
 //           text,
 //         },
@@ -149,14 +149,14 @@ const InputComp = () => {
       });
     }
 
-    await updateDoc(doc(firestore, "userChats", currentUser.uid), {
+    await updateDoc(doc(firestore, "chatss", currentUser.uid), {
       [data.chatId + ".lastMessage"]: {
         text,
       },
       [data.chatId + ".date"]: serverTimestamp(),
     });
 
-    await updateDoc(doc(firestore, "userChats", data.user.uid), {
+    await updateDoc(doc(firestore, "chatss", data.user.uid), {
       [data.chatId + ".lastMessage"]: {
         text,
       },

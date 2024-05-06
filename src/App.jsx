@@ -4,11 +4,12 @@ import AuthPage from './pages/AuthPage/AuthPage';
 import Chat from './pages/ChatPage/Chat';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase/firebase";
-// import Sidebar from "./components/Sidebar/Sidebar";
+import Test from "./components/Sidebar/Test";
 import PageLayout from "./Layouts/PageLayout/PageLayout";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import { useContext } from "react";
 import {AuthContext} from "./context/AuthContext";
+
 
 function App() {
   const [authUser] = useAuthState(auth);
@@ -26,6 +27,7 @@ function App() {
       <Route path='/' element={authUser ? <HomePage /> : <Navigate to='/auth' />} />
 			<Route path='/auth' element={!authUser ? <AuthPage /> : <Navigate to='/' />} />
       <Route path='/:username' element={<ProfilePage/>} />
+      <Route path='/test' element={<Test/>} />
       <Route path='/chat' element={
               <ProtectedRoute>
                 <Chat/>

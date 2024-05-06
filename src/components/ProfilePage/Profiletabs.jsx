@@ -15,7 +15,7 @@ const Profiletabs = () => {
 					<BsGrid3X3 color={"#127B7E"}/>
 				</Box>
 				<Text fontSize={12} display={{ base: "none", sm: "block" }} color={"#127B7E"}>
-					Posts
+					Ideas
 				</Text>
 			</Flex>
 

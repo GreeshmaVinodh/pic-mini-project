@@ -12,7 +12,7 @@
 
 //   useEffect(() => {
 //     const getChats = () => {
-//       const unsub = onSnapshot(doc(firestore, "userChats", currentUser.uid), (doc) => {
+//       const unsub = onSnapshot(doc(firestore, "chatss", currentUser.uid), (doc) => {
 //         setChats(doc.data());
 //       });
 
@@ -70,7 +70,7 @@ const ChatsComp = () => {
 
   useEffect(() => {
     const getChats = () => {
-      const unsub = onSnapshot(doc(firestore, "userChats", currentUser.uid), (doc) => {
+      const unsub = onSnapshot(doc(firestore, "chatss", currentUser.uid), (doc) => {
         setChats(Object.entries(doc.data() || {}));
       });
       return () => unsub();
