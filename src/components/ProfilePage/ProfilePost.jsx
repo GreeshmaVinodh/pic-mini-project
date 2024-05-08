@@ -22,7 +22,7 @@ import useAuthStore from "../../store/authStore";
 import useShowToast from "../../hooks/useShowToast";
 import { useState } from "react";
 import PostFooter from "../FeedPost/PostFooter";
-// import Comment from "../Comment/Comment";
+import Comment from "../Comment/Comment";
 import useUserProfileStore from "../../store/userProfileStore";
 import usePostStore from "../../store/postStore";
 import { firestore } from "../../firebase/firebase";
@@ -92,10 +92,10 @@ const ProfilePost = ({post}) => {
 				</Text>
 			</Flex>
 			<Flex>
-				{/* <FaComment size={20} />
+				<FaComment size={20} />
 					<Text fontWeight={"bold"} ml={2}>
 						{post.comments.length}
-					</Text> */}
+					</Text>
 			</Flex>
 		</Flex>
 	</Flex>
@@ -116,12 +116,12 @@ const ProfilePost = ({post}) => {
 							gap='4'
 							w={{ base: "90%", sm: "70%", md: "full" }}
 							mx={"auto"}
-							maxH={"100vh"}
+							maxH={"90vh"}
 							minH={"50vh"}
 						>
 							<Flex
 								borderRadius={4}
-								overflow={"hidden"}
+								overflow={"auto"}
 								border={"1px solid"}
 								borderColor={"#127B7E"}
 								flex={1.5}
@@ -163,9 +163,9 @@ const ProfilePost = ({post}) => {
 									{/* CAPTION */}
 									{post.description && <Description post={post} />}
 									{/* COMMENTS */}
-									{/* {post.comments.map((comment) => (
+									{post.comments.map((comment) => (
 										<Comment key={comment.id} comment={comment} />
-									))} */}
+									))}
 								</VStack>
 								<Divider my={4} bg={"gray.8000"} />
 

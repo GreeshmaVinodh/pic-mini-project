@@ -18,6 +18,7 @@ import { CgAddR } from "react-icons/cg";
 import useShowToast from "../../hooks/useShowToast";
 import useAuthStore from "../../store/authStore";
 import usePostStore from "../../store/postStore";
+import useUserProfileStore from "../../store/userProfileStore";
 import { useLocation } from "react-router-dom";
 import { collection, doc, updateDoc, arrayUnion, addDoc } from 'firebase/firestore';
 import { firestore } from '../../firebase/firebase';
@@ -105,6 +106,7 @@ function useCreatePost() {
     const [isLoading, setIsLoading] = useState(false);
     const authUser = useAuthStore((state) => state.user);
     const createPost = usePostStore((state) => state.createPost);
+    const userProfile = useUserProfileStore((state) => state.userProfile);
     const { pathname } = useLocation();
   
     const handleCreatePost = async (caption, description) => {
@@ -129,10 +131,11 @@ function useCreatePost() {
         if (createPost) {
           createPost({ ...newPost, id: postDocRef.id });
         }
-  
-        if (pathname !== "/") {
+        
+        if (userProfile.uid === authUser.uid) createPost({ ...newPost, id: postDocRef.id });
+        
+        if (pathname !== "/" && userProfile.uid === authUser.uid) addPost({ ...newPost, id: postDocRef.id });
           showToast("Success", "Post created successfully", "success");
-        }
       } catch (error) {
         showToast("Error", error.message, "error");
       } finally {
