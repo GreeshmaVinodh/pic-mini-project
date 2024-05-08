@@ -1,19 +1,13 @@
-import { Container, VStack ,Skeleton,SkeletonCircle,Flex,Box} from '@chakra-ui/react'
+import { Container, VStack ,Skeleton,SkeletonCircle,Flex,Box,Text} from '@chakra-ui/react'
 import FeedPost from './FeedPost';
-import { useEffect,useState } from 'react';
+import useGetFeedPosts from "../../hooks/useGetFeedPosts";
 
 const FeedPosts = () => {
-  const[isLoading, setIsLoading]=useState(true);
-
-  useEffect(() => {
-    setTimeout(() =>{
-      setIsLoading(false)
-    },2000 )
-  },[])
+  const { isLoading, posts } = useGetFeedPosts();
 
   return (
     <Container maxW={"container.sm"} py={10} px={2} >
-      {isLoading && [0.1,2,3].map((_,idx) => (
+      {isLoading && [0,1,2].map((_,idx) => (
         <VStack key={idx} gap={4} alignItems={'flex-start'} mp={10}>
           <Flex gap={2}>
             <SkeletonCircle size='10' />
@@ -27,14 +21,7 @@ const FeedPosts = () => {
           </Skeleton>
         </VStack>
       ))}
-    {!isLoading && (
-      <>
-        <FeedPost img='/assets/post.png' username='aswani' avatar='/avatar.png'/>
-        <FeedPost img='/assets/post.png' username='greeshma' avatar='/avatar.png'/>
-        <FeedPost img='/assets/post.png' username='sandra' avatar='/avatar.png'/>
-        <FeedPost img='assets/post.png' username='anurag' avatar='/avatar.png'/>
-      </>
-    )}    
+    {!isLoading && posts.map((post) => <FeedPost key={post.id} post={post} />)}
     </Container>
   )
 }
