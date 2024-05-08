@@ -31,7 +31,7 @@
 // 					uid: newUser.user.uid,
 // 					email: newUser.user.email,
 // 					username: newUser.user.email.split("@")[0],
-// 					name: newUser.user.displayName,
+// 					name: newUser.user.username,
 // 					bio: "",
 // 					profilePicURL: newUser.user.photoURL,
 // 					followers: [],

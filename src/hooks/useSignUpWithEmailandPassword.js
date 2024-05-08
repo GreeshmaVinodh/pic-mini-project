@@ -3,13 +3,13 @@ import { auth, firestore } from "../firebase/firebase";
 import { collection, doc, getDocs, query, setDoc, where } from "firebase/firestore";
 import useShowToast from "./useShowToast";
 import useAuthStore from "../store/authStore";
-import { useNavigate } from "react-router-dom";
+
 
 const useSignUpWithEmailAndPassword = () => {
 	const [createUserWithEmailAndPassword, , loading, error] = useCreateUserWithEmailAndPassword(auth);
 	const showToast = useShowToast();
 	const loginUser = useAuthStore((state) => state.login);
-	const navigate = useNavigate();
+	
 
 	const signup = async (inputs) => {
 		if (!inputs.email || !inputs.password || !inputs.username || !inputs.name ||!inputs.userType ) {
@@ -47,12 +47,15 @@ const useSignUpWithEmailAndPassword = () => {
 					posts: [],
 					createdAt: Date.now(),
 				};
+
 				await setDoc(doc(firestore, "users", newUser.user.uid), userDoc);
 				localStorage.setItem("userInfo", JSON.stringify(userDoc));
 				loginUser(userDoc);
-				//create empty user chats on firestore
-				await setDoc(doc(firestore, "chatss", newUser.user.uid), {});
-				navigate("/");
+
+				await setDoc(doc(firestore, "userChats", newUser.user.uid),{
+					chats : [],
+				});
+					
 			}
 		} catch (error) {
 			showToast("Error", error.message, "error");
