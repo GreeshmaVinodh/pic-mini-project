@@ -19,6 +19,7 @@ const Signup = () => {
     name: "",
     username: "",
     email: "",
+    userType : "",
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
