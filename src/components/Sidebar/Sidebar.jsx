@@ -41,7 +41,7 @@ const Sidebar = () => {
           gap={4}
           _hover={{ bg: "whiteAlpha.400" }}
           borderradius={6}
-          paddingTop={10}
+          paddingTop={5}
           p={2}
           w={{ base: 10, md: "full" }}
           justifycontent={{ base: "center", md: "flex-end" }}

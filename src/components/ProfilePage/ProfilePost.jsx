@@ -14,21 +14,23 @@ import {
   VStack,
   useDisclosure,
 } from "@chakra-ui/react";
-// import { FaComment } from "react-icons/fa";
+import { FaComment } from "react-icons/fa";
 import { AiFillHeart } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import Description from "../Comment/Description";
 import useAuthStore from "../../store/authStore";
 import useShowToast from "../../hooks/useShowToast";
-import { useState } from "react";
+import {useState } from "react";
 import PostFooter from "../FeedPost/PostFooter";
 import Comment from "../Comment/Comment";
 import useUserProfileStore from "../../store/userProfileStore";
 import usePostStore from "../../store/postStore";
 import { firestore } from "../../firebase/firebase";
 import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { useNavigate } from 'react-router-dom';
 
 const ProfilePost = ({ post }) => {
+  const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const userProfile = useUserProfileStore((state) => state.userProfile);
   const authUser = useAuthStore((state) => state.user);
@@ -37,6 +39,10 @@ const ProfilePost = ({ post }) => {
   const deletePost = usePostStore((state) => state.deletePost);
   const decrementPostsCount = useUserProfileStore((state) => state.deletePost);
 
+  console.log(post);
+  const handlePayment = () => {
+    navigate('/payment');
+  };
   const handleDeletePost = async () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     if (isDeleting) return;
@@ -84,64 +90,112 @@ const ProfilePost = ({ post }) => {
           zIndex={1}
           justifyContent={"center"}
         >
-			<Flex alignItems={"center"} justifyContent={"center"} gap={50}>
-			<Flex>
-				<AiFillHeart size={20} />
-				<Text fontWeight={"bold"} ml={2}>
-						{post.likes.length}
-				</Text>
-			</Flex>
-			<Flex>
-				<FaComment size={20} />
-					<Text fontWeight={"bold"} ml={2}>
-						{post.comments.length}
-					</Text>
-			</Flex>
-		</Flex>
-	</Flex>
+          <Flex alignItems={"center"} justifyContent={"center"} gap={50}>
+            <Flex>
+              <AiFillHeart size={20} />
+              <Text fontWeight={"bold"} ml={2}>
+                {post.likes.length}
+              </Text>
+            </Flex>
+            <Flex>
+              <FaComment size={20} />
+              <Text fontWeight={"bold"} ml={2}>
+                {post.comments.length}
+              </Text>
+            </Flex>
+          </Flex>
+        </Flex>
 
-		<Flex border={"1px solid #127B7E "} borderRadius={4} h={200} gap={5}>
-			<Text color={"#127B7E"} fontSize={"sm"} padding={3}>
-				{post.caption}
-			</Text>
-		</Flex>
-		</GridItem>
+        <Flex border={"1px solid #127B7E "} borderRadius={4} h={200} gap={5}>
+        {post.imageURL ? (
+            <img src={post.imageURL} alt="Post" />
+              ) : (post.isNew == true ? (
+            <Text
+              color={"#127B7E"}
+              fontSize={"sm"}
+              padding={3}
+              filter="auto"
+              blur="5px"
+              
+            >
+              {post.caption}
+            </Text>
+          ) : (
+            <Text color={"#127B7E"} fontSize={"sm"} padding={3}>
+              {post.caption}
+            </Text>
+          ))}
+        </Flex>
+      </GridItem>
 
-        <Modal isOpen={isOpen} onClose={onClose} isCentered={true}  size={{ base: "2xl", md: "5xl" }}>
-				<ModalOverlay />
-				<ModalContent>
-					<ModalCloseButton />
-					<ModalBody bg={"white"} pb={5}>
-						<Flex
-							gap='4'
-							w={{ base: "90%", sm: "70%", md: "full" }}
-							mx={"auto"}
-							maxH={"90vh"}
-							minH={"50vh"}
-						>
-							<Flex
-								borderRadius={4}
-								overflow={"auto"}
-								border={"1px solid"}
-								borderColor={"#127B7E"}
-								flex={1.5}
-								justifyContent={"center"}
-								alignItems={"center"}
-							>
-								<Box>
-									<Text color={"#127B7E"} padding={2}>
-										{post.caption}
-									</Text>
-								</Box>
-							</Flex>
-							<Flex flex={1} flexDir={"column"} px={10} display={{ base: "none", md: "flex" }}>
-								<Flex alignItems={"center"} justifyContent={"space-between"}>
-									<Flex alignItems={"center"} gap={4}>
-										<Avatar src={userProfile.profilePicURL} size={"sm"} name='As a Programmer' />
-										<Text fontWeight={"bold"} fontSize={12} color={"#127B7E"}>
-											{userProfile.username}
-										</Text>
-									</Flex>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered={true}
+        size={{ base: "2xl", md: "5xl" }}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton />
+          <ModalBody bg={"white"} pb={5}>
+            <Flex
+              gap="4"
+              w={{ base: "90%", sm: "70%", md: "full" }}
+              mx={"auto"}
+              maxH={"90vh"}
+              minH={"50vh"}
+            >
+              <Flex
+                borderRadius={4}
+                overflow={"auto"}
+                border={"1px solid"}
+                borderColor={"#127B7E"}
+                flex={1.5}
+                justifyContent={"center"}
+                alignItems={"center"}
+              >
+                <Box>
+                  {post.imageURL ? (
+                    <img src={post.imageURL} alt="Post" />
+                  ) : post.isNew == true ? (
+                    <Text
+                      color={"#127B7E"}
+                      padding={2}
+                      filter="auto"
+                      blur="5px"
+                      onClick={handlePayment}
+                    >
+                      {post.caption}
+                    </Text>
+                  ) : (
+                    <Text
+                      color={"#127B7E"}
+                      padding={2}
+                      filter="auto"
+                      blur="0px"
+                    >
+                      {post.caption}
+                    </Text>
+                  )}
+                </Box>
+              </Flex>
+              <Flex
+                flex={1}
+                flexDir={"column"}
+                px={10}
+                display={{ base: "none", md: "flex" }}
+              >
+                <Flex alignItems={"center"} justifyContent={"space-between"}>
+                  <Flex alignItems={"center"} gap={4}>
+                    <Avatar
+                      src={userProfile.profilePicURL}
+                      size={"sm"}
+                      name="As a Programmer"
+                    />
+                    <Text fontWeight={"bold"} fontSize={12} color={"#127B7E"}>
+                      {userProfile.username}
+                    </Text>
+                  </Flex>
 
                   {authUser?.uid === userProfile.uid && (
                     <Button
@@ -159,15 +213,20 @@ const ProfilePost = ({ post }) => {
                 </Flex>
                 <Divider my={4} bg={"gray.500"} />
 
-								<VStack w='full' alignItems={"start"} maxH={"350px"} overflowY={"auto"}>
-									{/* CAPTION */}
-									{post.description && <Description post={post} />}
-									{/* COMMENTS */}
-									{post.comments.map((comment) => (
-										<Comment key={comment.id} comment={comment} />
-									))}
-								</VStack>
-								<Divider my={4} bg={"gray.8000"} />
+                <VStack
+                  w="full"
+                  alignItems={"start"}
+                  maxH={"350px"}
+                  overflowY={"auto"}
+                >
+                  {/* CAPTION */}
+                  {post.description && <Description post={post} />}
+                  {/* COMMENTS */}
+                  {post.comments.map((comment) => (
+                    <Comment key={comment.id} comment={comment} />
+                  ))}
+                </VStack>
+                <Divider my={4} bg={"gray.8000"} />
 
                 <PostFooter isProfilePage={true} post={post} />
               </Flex>
