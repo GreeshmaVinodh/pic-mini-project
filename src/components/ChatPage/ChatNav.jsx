@@ -7,8 +7,13 @@ import {
 import useSearchUser from "../../hooks/useSearchUser";
 
 const ChatNav = () => {
+<<<<<<< HEAD
     const { user } = useSearchUser();
     console.log(user)
+=======
+  const {userProfile}=useSearchUser()
+  // console.log(userProfile)
+>>>>>>> da3d6bb9136e86375f38e0369e50f0e369209442
   return (
     <div>
       <div className="list">
@@ -17,7 +22,7 @@ const ChatNav = () => {
           <VStack spacing={2} alignItems={"flex-start"}>
             {/*<Link to={`/${user.username}`}> */}
               <Box fontSize={12} color={"#127B7E"} fontWeight={"bold"}>
-                {/* {user.name} */}Username
+                {userProfile?.username}
               </Box>
             {/* </Link> */}
           </VStack>
