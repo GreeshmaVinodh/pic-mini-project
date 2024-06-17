@@ -21,6 +21,7 @@ const Searchbar = () => {
   const handleSearchUser = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
+      console.log(searchRef.current.value);
       getUserProfile(searchRef.current.value);
     }
   };

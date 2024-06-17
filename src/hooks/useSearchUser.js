@@ -18,6 +18,7 @@ const useSearchUser = () => {
 			if (querySnapshot.empty) return showToast("Error", "User not found", "error");
 
 			querySnapshot.forEach((doc) => {
+				console.log(doc.data());
 				setUser(doc.data());
 			});
 		} catch (error) {

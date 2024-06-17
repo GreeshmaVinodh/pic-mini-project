@@ -4,15 +4,18 @@ import {
     VStack,
     Box,
   } from "@chakra-ui/react";
+import useSearchUser from "../../hooks/useSearchUser";
 
 const ChatNav = () => {
+    const { user } = useSearchUser();
+    console.log(user)
   return (
     <div>
       <div className="list">
         <Flex alignItems={"center"} gap={2}>
             <Avatar src='../../../public/assets/avatar.png' size={"md"} />
           <VStack spacing={2} alignItems={"flex-start"}>
-            {/* <Link to={`/${user.username}`}> */}
+            {/*<Link to={`/${user.username}`}> */}
               <Box fontSize={12} color={"#127B7E"} fontWeight={"bold"}>
                 {/* {user.name} */}Username
               </Box>

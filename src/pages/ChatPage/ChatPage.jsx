@@ -3,7 +3,9 @@ import ChatSidebar from "../../components/ChatPage/ChatSidebar";
 import ChatSection from "../../components/ChatPage/ChatSection";
 import './ChatPage.css';
 
+
 const ChatPage = () => {
+  
   return (
     <div>
       <Container maxW={"container.lg"} fontFamily="Sora , sans-serif">
