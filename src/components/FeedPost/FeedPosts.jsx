@@ -1,4 +1,4 @@
-import { Container, VStack ,Skeleton,SkeletonCircle,Flex,Box,Text} from '@chakra-ui/react'
+import { Container, VStack ,Skeleton,SkeletonCircle,Flex,Box} from '@chakra-ui/react'
 import FeedPost from './FeedPost';
 import useGetFeedPosts from "../../hooks/useGetFeedPosts";
 
