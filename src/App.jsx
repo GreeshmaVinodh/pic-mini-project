@@ -1,7 +1,7 @@
 import {Route, Navigate, Routes } from "react-router-dom";
 import HomePage from './pages/HomePage/HomePage';
 import AuthPage from './pages/AuthPage/AuthPage';
-// import ChatPage from './pages/ChatPage/ChatPage';
+import ChatPage from './pages/ChatPage/ChatPage';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase/firebase";
 import PageLayout from "./Layouts/PageLayout/PageLayout";
@@ -17,7 +17,7 @@ function App() {
       <Route path='/' element={authUser ? <HomePage /> : <Navigate to='/auth' />} />
 			<Route path='/auth' element={!authUser ? <AuthPage /> : <Navigate to='/' />} />
       <Route path='/:username' element={<ProfilePage/>} />
-      {/* <Route path='/chat' element={<ChatPage/>} /> */}
+      <Route path='/chat' element={<ChatPage/>} />
       
       </Routes>
     </PageLayout>
