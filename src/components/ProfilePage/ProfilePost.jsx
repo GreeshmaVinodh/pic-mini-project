@@ -20,14 +20,14 @@ import { MdDelete } from "react-icons/md";
 import Description from "../Comment/Description";
 import useAuthStore from "../../store/authStore";
 import useShowToast from "../../hooks/useShowToast";
-import {useState } from "react";
+import { useState } from "react";
 import PostFooter from "../FeedPost/PostFooter";
 import Comment from "../Comment/Comment";
 import useUserProfileStore from "../../store/userProfileStore";
 import usePostStore from "../../store/postStore";
 import { firestore } from "../../firebase/firebase";
 import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const ProfilePost = ({ post }) => {
   const navigate = useNavigate();
@@ -39,10 +39,10 @@ const ProfilePost = ({ post }) => {
   const deletePost = usePostStore((state) => state.deletePost);
   const decrementPostsCount = useUserProfileStore((state) => state.deletePost);
 
-  console.log(post);
   const handlePayment = () => {
-    navigate('/payment');
+    navigate(`/payment?postId=${post.id}`);
   };
+
   const handleDeletePost = async () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     if (isDeleting) return;
@@ -75,7 +75,7 @@ const ProfilePost = ({ post }) => {
         border={"1px solid"}
         borderColor={"whiteAlpha.300"}
         position={"relative"}
-        onClick={onOpen}
+        onClick={post.isNew ? handlePayment : onOpen}
       >
         <Flex
           opacity={0}
@@ -107,16 +107,16 @@ const ProfilePost = ({ post }) => {
         </Flex>
 
         <Flex border={"1px solid #127B7E "} borderRadius={4} h={200} gap={5}>
-        {post.imageURL ? (
+          {post.imageURL ? (
             <img src={post.imageURL} alt="Post" />
-              ) : (post.isNew == true ? (
+          ) : post.isNew === true ? (
             <Text
               color={"#127B7E"}
               fontSize={"sm"}
               padding={3}
               filter="auto"
               blur="5px"
-              
+              onClick={handlePayment}
             >
               {post.caption}
             </Text>
@@ -124,7 +124,7 @@ const ProfilePost = ({ post }) => {
             <Text color={"#127B7E"} fontSize={"sm"} padding={3}>
               {post.caption}
             </Text>
-          ))}
+          )}
         </Flex>
       </GridItem>
 
@@ -157,7 +157,7 @@ const ProfilePost = ({ post }) => {
                 <Box>
                   {post.imageURL ? (
                     <img src={post.imageURL} alt="Post" />
-                  ) : post.isNew == true ? (
+                  ) : post.isNew === true ? (
                     <Text
                       color={"#127B7E"}
                       padding={2}

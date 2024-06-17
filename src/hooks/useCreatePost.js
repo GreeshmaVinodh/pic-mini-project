@@ -13,7 +13,7 @@ const useCreatePost = () => {
             // Example logic to add a post to Firestore
             await firestore.collection('posts').add({
                 caption,
-                createdAt: new Date()
+                createdAt: new Date(),
             });
 
             console.log('Post created successfully!');

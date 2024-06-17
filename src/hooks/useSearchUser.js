@@ -20,16 +20,11 @@ const {userProfile,setUserProfile}=useUserProfileStore()
 			if (querySnapshot.empty) return showToast("Error", "User not found", "error");
 
 			querySnapshot.forEach((doc) => {
-<<<<<<< HEAD
-				console.log(doc.data());
-				setUser(doc.data());
-=======
 				setUserProfile(doc.data());
->>>>>>> da3d6bb9136e86375f38e0369e50f0e369209442
 			});
 		} catch (error) {
 			showToast("Error", error.message, "error");
-			setUser(null);
+			// setUser(null);
 		} finally {
 			setIsLoading(false);
 		}
