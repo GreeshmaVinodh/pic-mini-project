@@ -4,8 +4,11 @@ import {
     VStack,
     Box,
   } from "@chakra-ui/react";
+import useSearchUser from "../../hooks/useSearchUser";
 
 const ChatNav = () => {
+  const {userProfile}=useSearchUser()
+  // console.log(userProfile)
   return (
     <div>
       <div className="list">
@@ -14,7 +17,7 @@ const ChatNav = () => {
           <VStack spacing={2} alignItems={"flex-start"}>
             {/* <Link to={`/${user.username}`}> */}
               <Box fontSize={12} color={"#127B7E"} fontWeight={"bold"}>
-                {/* {user.name} */}Username
+                {userProfile?.username}
               </Box>
             {/* </Link> */}
           </VStack>

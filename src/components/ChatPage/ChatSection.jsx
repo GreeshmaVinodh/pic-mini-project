@@ -8,11 +8,11 @@ const ChatSection = () => {
       <div className='chatNav'>
         <ChatNav/>
       </div>
-      <div className='chatBody'>
-       <ChatBody/> 
-      </div>
       <div className='chatInput'>
         <ChatInput/>
+      </div>
+      <div className='chatBody'>
+       <ChatBody/> 
       </div>
     </div>
   )
