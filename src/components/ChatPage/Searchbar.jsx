@@ -1,6 +1,6 @@
 import { SearchLogo } from "../../../public/assets/constants";
 import useSearchUser from "../../hooks/useSearchUser";
-import './ChatSidebar.css'
+import './ChatSidebar.css';
 import { useRef } from "react";
 import {
   Input,
@@ -28,35 +28,39 @@ const Searchbar = () => {
 
   return (
     <>
-      <HStack spacing={4}>
+      <HStack spacing={4} maxW={"fit-content"}>
         <InputGroup>
-          <InputGroup>
-            <InputLeftAddon>
-              <SearchLogo />
-            </InputLeftAddon>
-            <Input
-              type="text"
-              placeholder="Search user"
-              onKeyDown={handleSearchUser}
-              ref={searchRef}
-            />
-          </InputGroup>
+          <InputLeftAddon>
+            <SearchLogo />
+          </InputLeftAddon>
+          <Input
+            type="text"
+            placeholder="Search user"
+            onKeyDown={handleSearchUser}
+            ref={searchRef}
+          />
         </InputGroup>
       </HStack>
       {user && (
         <div className="list">
-        <Flex alignItems={"center"} gap={2}>
-          <Link to={`/`}>
-            <Avatar src={user.profilePicURL} size={"md"} />
-          </Link>
-          <VStack spacing={2} alignItems={"flex-start"}>
-            <Link to={`/${user.username}`}>
-              <Box fontSize={12} color={"#127B7E"} fontWeight={"bold"}>
-                {user.name}
-              </Box>
+          <Flex
+            alignItems="center"
+            gap={2}
+            direction={{ base: "column", sm: "row" }}
+            w="full"
+            p={2}
+          >
+            <Link to={`/`}>
+              <Avatar src={user.profilePicURL} size="md" />
             </Link>
-          </VStack>
-        </Flex>
+            <VStack spacing={2} alignItems="flex-start">
+              <Link to={`/${user.username}`}>
+                <Box fontSize="md" color="#127B7E" fontWeight="bold">
+                  {user.name}
+                </Box>
+              </Link>
+            </VStack>
+          </Flex>
         </div>
       )}
     </>
@@ -64,4 +68,3 @@ const Searchbar = () => {
 };
 
 export default Searchbar;
-
