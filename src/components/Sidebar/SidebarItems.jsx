@@ -21,7 +21,7 @@ const SidebarItems = () => {
 			<Home />
 			<Search />
 			{ (authUser["userType"]=='Innovator')?<CreatePost/>:<CreateEvent/>}
-			{authUser["userType"] === 'Innovator' ? <UpdateProgress/> : null}
+			{authUser.userType === 'Innovator' && <UpdateProgress />}
             <Chatbox/>
 			<ProfileLink />
 		</>
