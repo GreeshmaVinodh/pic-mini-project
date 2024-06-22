@@ -1,18 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase";
 import useSearchUser from "../../hooks/useSearchUser";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { createOrGetChat } from "../../firebase/chat/newChat";
 import { listenForMessages } from "../../firebase/chat/listenMessage";
+import MessageContainer from "./MessageContainer";
 import './ChatBody.css';
-
-const MessageContainer = ({ message }) => {
-  return (
-    <div className="messageContainer">
-      <p>{message.message}</p>
-    </div>
-  );
-};
 
 const ChatBody = () => {
   const { userProfile } = useSearchUser();
@@ -33,9 +26,9 @@ const ChatBody = () => {
 
   return (
     <div className="chatBody">
-      {messages.map((message) => {
-        return <MessageContainer key={message.id} message={message} />;
-      })}
+      {messages.map((message) => (
+        <MessageContainer key={message.id} message={message} authUser={authUser} />
+      ))}
     </div>
   );
 };
