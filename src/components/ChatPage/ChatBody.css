@@ -53,4 +53,7 @@
     font-size: x-small;
     margin-right: 5px;
   }
-  
+  .timestamp{
+    font-size: x-small;
+    font-weight: lighter;
+  }

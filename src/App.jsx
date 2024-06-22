@@ -20,6 +20,7 @@ function App() {
       <Route path='/:username' element={<ProfilePage/>} />
       <Route path='/chat' element={<ChatPage/>} />
       <Route path='/payment' element={<Payment/>}/>
+      <Route path="/chat/:chatId" element={<ChatPage/>} />
       </Routes>
     </PageLayout>
   );
