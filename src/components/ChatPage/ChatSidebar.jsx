@@ -1,5 +1,6 @@
 import Searchbar from './Searchbar';
-import './ChatSidebar.css'
+import './ChatSidebar.css';
+import Users from './Users';
 
 const ChatSidebar = () => {
   return (
@@ -9,6 +10,9 @@ const ChatSidebar = () => {
     </div>
     <div className='searchbar'>
     <Searchbar/>
+    </div>
+    <div>
+      <Users/>
     </div>
     </>
   )

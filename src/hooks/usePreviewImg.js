@@ -2,32 +2,37 @@ import { useState } from "react";
 import useShowToast from "./useShowToast";
 
 const usePreviewImg = () => {
-	const [selectedFile, setSelectedFile] = useState(null);
-	const showToast = useShowToast();
-    const maxFileSizeInBytes = 2 * 1024 * 1024; // 2MB
-    const handleImageChange = (e) => {
-		const file = e.target.files[0];
-		if (file && file.type.startsWith("image/")) {
-			if (file.size > maxFileSizeInBytes) {
-				showToast("Error", "File size must be less than 2MB", "error");
-				setSelectedFile(null);
-				return;
-			}
-			const reader = new FileReader();
+  const [selectedFile, setSelectedFile] = useState(null);
+  const showToast = useShowToast();
+  const maxFileSizeInBytes = 2 * 1024 * 1024; // 2MB
 
-			reader.onloadend = () => {
-				setSelectedFile(reader.result);
-			};
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
 
-			reader.readAsDataURL(file);
-		} else {
-			showToast("Error", "Please select an image file", "error");
-			setSelectedFile(null);
-		}
-	};
+    if (file) {
+      if (file.type.startsWith("image/")) {
+        if (file.size > maxFileSizeInBytes) {
+          showToast("Error", "File size must be less than 2MB", "error");
+          setSelectedFile(null);
+          return;
+        }
 
-	return { selectedFile, handleImageChange, setSelectedFile };
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setSelectedFile(reader.result);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        showToast("Error", "Please select an image file", "error");
+        setSelectedFile(null);
+      }
+    } else {
+      showToast("Error", "No file selected", "error");
+      setSelectedFile(null);
+    }
+  };
+
+  return { selectedFile, handleImageChange, setSelectedFile };
 };
 
 export default usePreviewImg;
-
