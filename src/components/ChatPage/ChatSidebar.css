@@ -16,4 +16,8 @@
 .list{
     margin-top: 20px;
     padding-right: 10px;
+    
+}
+.users{
+    overflow-y: auto;
 }
