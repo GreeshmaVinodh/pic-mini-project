@@ -41,6 +41,10 @@ const User = ({ user }) => {
     }
   };
 
+  if (!lastMessage) {
+    return null; // Don't render anything if there is no last message
+  }
+
   return (
     <Flex
       justifyContent={"space-between"}
@@ -58,11 +62,9 @@ const User = ({ user }) => {
           <Box fontSize={12} color={"#127B7E"} fontWeight={"bold"}>
             {user.username}
           </Box>
-          {lastMessage && (
-            <Text fontSize={10} color={"gray.500"}>
-              {`${lastMessage.senderId === authUser.uid ? "You: " : ""}${lastMessage.message}`}
-            </Text>
-          )}
+          <Text fontSize={10} color={"gray.500"}>
+            {`${lastMessage.senderId === authUser.uid ? "You: " : ""}${lastMessage.message}`}
+          </Text>
         </VStack>
       </Flex>
       {/* You can add any additional logic or buttons here */}

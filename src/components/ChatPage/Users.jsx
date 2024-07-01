@@ -1,4 +1,4 @@
-import { VStack } from "@chakra-ui/react";
+import { VStack, Box } from "@chakra-ui/react";
 import User from './User';
 import useGetMessagedUsers from "../../hooks/useGetMessagedUsers";
 
@@ -7,11 +7,13 @@ const Users = () => {
   if (isLoading) return null;
 
   return (
-    <VStack py={4} px={6} gap={1}>
-      {messagedUsers.map((user) => (
-        <User user={user} key={user.uid} />
-      ))}
-    </VStack>
+    <Box maxH="400px" overflowY="auto">
+      <VStack py={4} px={6} gap={1}>
+        {messagedUsers.map((user) => (
+          <User user={user} key={user.uid} />
+        ))}
+      </VStack>
+    </Box>
   );
 };
 

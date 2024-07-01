@@ -11,7 +11,7 @@ const ChatSidebar = () => {
     <div className='searchbar'>
     <Searchbar/>
     </div>
-    <div>
+    <div className='users'>
       <Users/>
     </div>
     </>
