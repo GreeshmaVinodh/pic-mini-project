@@ -6,11 +6,14 @@ import { createOrGetChat } from "../../firebase/chat/newChat";
 import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
 import { firestore } from "../../firebase/firebase";
 import { useEffect, useState } from "react";
+import useSearchUser from "../../hooks/useSearchUser";
 
 const User = ({ user }) => {
   const [authUser] = useAuthState(auth);
   const navigate = useNavigate();
   const [lastMessage, setLastMessage] = useState(null);
+  // const [searchUser, setSearchUser] = useSearchUser(null);
+  const { userSearch, getUserProfile } = useSearchUser();
 
   useEffect(() => {
     const getLastMessage = async () => {
@@ -35,6 +38,9 @@ const User = ({ user }) => {
   const handleUserClick = async () => {
     try {
       const chatDocRef = await createOrGetChat(authUser.uid, user.uid);
+      console.log(user);
+      getUserProfile(user.username);
+
       navigate(`/chat/${chatDocRef.id}`);
     } catch (error) {
       console.error("Error navigating to chat:", error);
