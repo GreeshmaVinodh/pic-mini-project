@@ -1,4 +1,3 @@
-import React from "react";
 import './ChatBody.css';
 import useSearchUser from "../../hooks/useSearchUser";
 import { AvatarGroup,Avatar } from "@chakra-ui/react";
@@ -11,8 +10,8 @@ const MessageContainer = ({ message, authUser }) => {
   const formattedTime = message.timestamp?.toDate().toLocaleTimeString();
 
   return (
-    <div className={`messageContainer ${isAuthUser ? "alignRight" : "alignLeft"}`}>
-      {!isAuthUser && (
+    <div className={`messageContainer ${isAuthUser ? "alignLeft" : "alignRight"}`}>
+      {isAuthUser && (
         <div className="userInfo">
           <AvatarGroup size={{ base: "sm", md: "sm" }} justifySelf={"center"} alignSelf={"flex-start"} mx={"auto"}>
             <Avatar src={userProfile?.profilePicURL} alt='As a programmer logo' />

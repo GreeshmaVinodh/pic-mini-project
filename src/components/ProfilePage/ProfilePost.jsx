@@ -40,7 +40,11 @@ const ProfilePost = ({ post }) => {
   const decrementPostsCount = useUserProfileStore((state) => state.deletePost);
 
   const handlePayment = () => {
-    navigate(`/payment?postId=${post.id}`);
+    if (authUser.userType === 'Innovator' && post.isNew === true) {
+      navigate(`/payment?postId=${post.id}`);
+    } else {
+      navigate('/funding');
+    } 
   };
 
   const handleDeletePost = async () => {
@@ -75,7 +79,7 @@ const ProfilePost = ({ post }) => {
         border={"1px solid"}
         borderColor={"whiteAlpha.300"}
         position={"relative"}
-        onClick={post.isNew ? handlePayment : onOpen}
+        onClick={onOpen}
       >
         <Flex
           opacity={0}
@@ -109,14 +113,14 @@ const ProfilePost = ({ post }) => {
         <Flex border={"1px solid #127B7E "} borderRadius={4} h={200} gap={5}>
           {post.imageURL ? (
             <img src={post.imageURL} alt="Post" />
-          ) : post.isNew === true ? (
+          ) : (authUser["userType"]=='Innovator') && post.isNew === true ? (
             <Text
               color={"#127B7E"}
               fontSize={"sm"}
               padding={3}
               filter="auto"
               blur="5px"
-              onClick={handlePayment}
+              
             >
               {post.caption}
             </Text>
@@ -157,7 +161,7 @@ const ProfilePost = ({ post }) => {
                 <Box>
                   {post.imageURL ? (
                     <img src={post.imageURL} alt="Post" />
-                  ) : post.isNew === true ? (
+                  ) : (authUser["userType"]=='Innovator') && post.isNew === true ? (
                     <Text
                       color={"#127B7E"}
                       padding={2}
@@ -173,6 +177,7 @@ const ProfilePost = ({ post }) => {
                       padding={2}
                       filter="auto"
                       blur="0px"
+                      onClick={handlePayment}
                     >
                       {post.caption}
                     </Text>

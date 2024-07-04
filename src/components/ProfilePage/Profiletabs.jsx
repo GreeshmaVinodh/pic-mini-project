@@ -1,11 +1,11 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import { BsGrid3X3, BsBookmark } from "react-icons/bs";
-import useAuthStore from "../../store/authStore";
-import useUserProfileStore from "../../store/userProfileStore";
+import { BsGrid3X3} from "react-icons/bs";
+// import useAuthStore from "../../store/authStore";
+// import useUserProfileStore from "../../store/userProfileStore";
 
 const Profiletabs = () => {
-  const authUser = useAuthStore((state) => state.user);
-  const userProfile = useUserProfileStore((state) => state.userProfile);
+  // const authUser = useAuthStore((state) => state.user);
+  // const userProfile = useUserProfileStore((state) => state.userProfile);
 
   return (
     <Flex
@@ -26,19 +26,9 @@ const Profiletabs = () => {
           <BsGrid3X3 color={"#127B7E"} />
         </Box>
         <Text fontSize={12} display={{ base: "none", sm: "block" }} color={"#127B7E"}>
-          {(authUser?.userType === 'Innovator'  && userProfile?.userType === 'Innovator')  ? 'Ideas' : 'Events'}
+         POSTS
         </Text>
-      </Flex>
-      {authUser?.userType === 'Innovator' && userProfile?.userType === 'Innovator' && (
-        <Flex alignItems={"center"} p="3" gap={1} cursor={"pointer"}>
-          <Box fontSize={20}>
-            <BsBookmark color={"#127B7E"} />
-          </Box>
-          <Text fontSize={12} display={{ base: "none", sm: "block" }} color={"#127B7E"}>
-            Progress
-          </Text>
-        </Flex>
-      )}
+      </Flex> 
     </Flex>
   );
 };

@@ -7,7 +7,7 @@ import { auth } from "./firebase/firebase";
 import PageLayout from "./Layouts/PageLayout/PageLayout";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import Payment from "./pages/PaymentPage/Payment";
-
+import Funding from './pages/PaymentPage/Funding';
 
 
 function App() {
@@ -19,7 +19,8 @@ function App() {
 			<Route path='/auth' element={!authUser ? <AuthPage /> : <Navigate to='/' />} />
       <Route path='/:username' element={<ProfilePage/>} />
       <Route path='/chat' element={<ChatPage/>} />
-      <Route path='/payment' element={<Payment/>}/>
+      <Route path="/payment" element={<Payment />} />
+      <Route path="/funding" element={<Funding />} />
       <Route path="/chat/:chatId" element={<ChatPage/>} />
       </Routes>
     </PageLayout>

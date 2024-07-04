@@ -5,7 +5,7 @@ import { firestore } from "../../firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import useShowToast from "../../hooks/useShowToast";
 import './Payment.css';
-import PaymentGateway from './PaymentGateway'
+
 import {
   Modal,
   ModalBody,
@@ -20,8 +20,11 @@ const Payment = () => {
   const [searchParams] = useSearchParams();
   const postId = searchParams.get("postId");
   const [post, setPost] = useState(null);
+  const [paymentComplete, setPaymentComplete] = useState(false);
   const showToast = useShowToast();
+  // const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   useEffect(() => {
     const fetchPost = async () => {
       if (!postId) {
@@ -44,6 +47,28 @@ const Payment = () => {
     fetchPost();
   }, [postId, showToast]);
 
+  useEffect(() => {
+    const checkRedirect = () => {
+      const redirectTime = sessionStorage.getItem("redirectTime");
+      if (redirectTime) {
+        const now = new Date().getTime();
+        if (now - redirectTime >= 6000) { // 1 minute
+          showToast("Success", "Payment successful!", "success");
+          sessionStorage.removeItem("redirectTime");
+          setPaymentComplete(true);
+        }
+      }
+    };
+
+    const interval = setInterval(checkRedirect, 1000);
+    return () => clearInterval(interval);
+  }, [showToast]);
+
+  const handleRedirect = () => {
+    sessionStorage.setItem("redirectTime", new Date().getTime());
+    window.location.href = "https://buy.stripe.com/test_9AQ02bbZE4Or3YsbII";
+  };
+
   if (!post) {
     return (
       <Box>
@@ -54,13 +79,23 @@ const Payment = () => {
 
   return (
     <>
-    <PaymentGateway/>
-        <div className='payment'>
-            This idea is authorized by PIC as an New or Innovative idea. To view the details of the idea you have to pay a certain amount to the innovator.
-            <br></br><br></br>
-            <Button onClick={onOpen}>Pay Now</Button>
-        </div>
-      
+      <div className='payment'>
+        {!paymentComplete ? (
+          <>
+          <div>
+          <Text>The idea you have selected is authorized by PIC as an New or Innovative idea. To view the details of the idea you have to pay a certain amount to the innovator.</Text>
+          <Button onClick={handleRedirect}>Pay Now</Button>
+          </div>
+          </>
+          
+        ) : (
+          <Box mt={4}>
+            <Text>Payment successful!</Text>
+            <Button onClick={onOpen}>View Post Details</Button>
+          </Box>
+        )}
+      </div>
+    
       <Modal
         isOpen={isOpen}
         onClose={onClose}
