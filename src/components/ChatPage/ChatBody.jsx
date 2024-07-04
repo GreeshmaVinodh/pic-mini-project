@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase";
 import useSearchUser from "../../hooks/useSearchUser";
 import { useAuthState } from "react-firebase-hooks/auth";

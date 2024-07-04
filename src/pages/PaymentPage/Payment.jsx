@@ -5,6 +5,7 @@ import { firestore } from "../../firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import useShowToast from "../../hooks/useShowToast";
 import './Payment.css';
+import PaymentGateway from './PaymentGateway'
 import {
   Modal,
   ModalBody,
@@ -53,6 +54,7 @@ const Payment = () => {
 
   return (
     <>
+    <PaymentGateway/>
         <div className='payment'>
             This idea is authorized by PIC as an New or Innovative idea. To view the details of the idea you have to pay a certain amount to the innovator.
             <br></br><br></br>
