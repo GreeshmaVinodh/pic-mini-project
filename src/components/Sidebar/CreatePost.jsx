@@ -126,7 +126,7 @@ const CreatePost = () => {
         >
           <CgAddR size={25} color={"#127B7E"} />
           <Box display={{ base: "none", md: "block" }} color={"#127B7E"}>
-            Create
+            Add Post
           </Box>
         </Flex>
       </Tooltip>
@@ -156,7 +156,7 @@ const CreatePost = () => {
               onChange={(e) => setDescription(e.target.value)}
             />
           </ModalBody>
-          <ModalFooter>
+          {/* <ModalFooter>
             <Button
               mr={3}
               onClick={handleSubmit}
@@ -166,7 +166,7 @@ const CreatePost = () => {
             >
               Test
             </Button>
-          </ModalFooter>
+          </ModalFooter> */}
           <Button
             onClick={handlePostCreation}
             isLoading={isLoading}

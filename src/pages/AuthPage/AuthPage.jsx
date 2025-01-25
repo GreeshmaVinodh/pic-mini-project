@@ -18,10 +18,10 @@ const AuthPage = () => {
             {/* Left hand-side */}
             <Box display={{ base: "none", md: "block" }}>
               <Box className="tagline" textAlign={"left"}>
-                Inspiring Tomorrows <br></br>Innovators,
+                Welcome to <br></br>
               </Box>
               <Box className="highlight" textAlign={"left"}>
-                today!
+                MyGov
               </Box>
             </Box>
             {/* Right hand-side */}

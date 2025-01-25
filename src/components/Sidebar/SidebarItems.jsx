@@ -2,7 +2,7 @@ import CreatePost from "./CreatePost";
 import Home from "./Home";
 import ProfileLink from "./ProfileLink.jsx";
 import Search from "./Search";
-import Chatbox from "./Chatbox";
+// import Chatbox from "./Chatbox";
 import useAuthStore from "../../store/authStore";
 import CreateEvent from "./CreateEvent.jsx";
 import UpdateProgress from "./UpdateProgress.jsx";
@@ -22,7 +22,7 @@ const SidebarItems = () => {
 			<Search />
 			{ (authUser["userType"]=='Innovator')?<CreatePost/>:<CreateEvent/>}
 			{authUser.userType === 'Innovator' && <UpdateProgress />}
-            <Chatbox/>
+            {/* <Chatbox/> */}
 			<ProfileLink />
 		</>
 	);

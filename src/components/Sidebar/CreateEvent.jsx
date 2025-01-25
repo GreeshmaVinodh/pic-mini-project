@@ -76,7 +76,7 @@ const CreateEvent = () => {
         >
           <CgAddR size={25} color={"#127B7E"} />
           <Box display={{ base: "none", md: "block" }} color={"#127B7E"}>
-            Create
+            Add Complaint
           </Box>
         </Flex>
       </Tooltip>
@@ -84,11 +84,11 @@ const CreateEvent = () => {
         <ModalOverlay />
 
         <ModalContent bg={"white"} border={"1px solid gray"}>
-          <ModalHeader color={"#127B7E"}>Create Event</ModalHeader>
+          <ModalHeader color={"#127B7E"}>Complaint</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
           <Textarea
-              placeholder="Event Description..."
+              placeholder="Add Complaint........"
               value={description}
               border={"1px solid #127B7E"}
               onChange={(e) => setDescription(e.target.value)}
@@ -138,7 +138,7 @@ const CreateEvent = () => {
               backgroundColor={"#127B7E"}
               color={"#fff"}
             >
-              Post
+              Send
             </Button>
           </ModalFooter>
         </ModalContent>

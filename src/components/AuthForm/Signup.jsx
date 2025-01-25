@@ -30,11 +30,11 @@ const Signup = () => {
       <Stack spacing={4} direction='row'>
       <Radio value='Innovator'
       onChange={(e) => setInputs({ ...inputs, userType: e.target.value })}>
-        Innovators
+        Government Authorities
       </Radio>
       <Radio value='Organization'
       onChange={(e) => setInputs({ ...inputs, userType: e.target.value })}>
-       Organizations</Radio>
+       Citizen</Radio>
      </Stack>
     </RadioGroup>
       <Input
